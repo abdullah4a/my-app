@@ -1,19 +1,18 @@
-import {saveSearched} from "../../services/search-service";
-import {searchActions} from "../constants/search-actions";
+import { searchActions } from "../constants/search-actions";
+import { saveSearched } from "../../services/search-service";
 
 const initialState = {
-    query: "Test",
+    query: "",
 }
-const saveText = (state = initialState, {type, payload}) => {
+const saveText = (state = initialState, { type, payload }) => {
     switch (type) {
+        case searchActions.GET_SEARCH:
+            return { ...state, query: payload };
         case searchActions.SAVE_SEARCH:
-            return saveSearched("").then(res => {
-                return res.data;
-            })
-        case searchActions.DELETE_SEARCH:
-            return null;
+            return { ...state, query: payload };
         default:
-            return "";
+            return state;
     }
 }
+
 export default saveText;

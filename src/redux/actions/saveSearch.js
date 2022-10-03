@@ -1,17 +1,15 @@
-import {searchActions} from "../constants/search-actions";
+import { searchActions } from "../constants/search-actions";
 
-export const saveSearch = (query) => {
-    console.log(query);
+export const getSearchAction = (query) => {
     return {
-        type: searchActions.SAVE_SEARCH,
+        type: searchActions.GET_SEARCH,
         payload: query,
     };
 }
 
-export const deleteSearch = (query) => {
-    console.log(query);
+export const saveSearchAction = (query) => {
     return {
-        type: searchActions.DELETE_SEARCH,
+        type: searchActions.SAVE_SEARCH,
         payload: query,
     };
 }
