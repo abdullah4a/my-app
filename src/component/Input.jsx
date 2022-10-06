@@ -14,7 +14,7 @@ export function Input(props) {
         dispatch(saveSearchAction(text));
         // saveSearch(e.target.value);
     }
-    const getAllSearched = async () => {
+    const getAllSearched = async (value) => {
         await getSearched().then(({ data: res }) => {
             setText(res.text);
             // dispatch(getSearchAction(res.text));
@@ -36,16 +36,21 @@ export function Input(props) {
     useEffect(() => {
         getAllSearched().then(res => res);
     }, []);
-    return (<div className="row App-header">
-        <div className="col-md-3 col-sm-6">
-            <form>
-                <div className="form-group">
-                    <input type="text" name="Text" value={text} onChange={handleChange} className="form-control"
-                        placeholder="Enter Text" />
-                </div>
-            </form>
+    return (
+        <div className="App-header">
+            <div className="col-md-4 col-sm-6">
+                <form>
+                    <div className="form-group">
+                        <input type="text" name="Text" value={text} onInput={(e) => {
+                            setText(e.target.value);
+                            dispatch(saveSearchAction(e.currentTarget.value))
+                        }} className="form-control"
+                            placeholder="Enter Text" />
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>);
+    );
 }
 
 const mapStateToProps = (state) => {
