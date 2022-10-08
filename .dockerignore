@@ -10,9 +10,7 @@
 /coverage
 
 # production
-/build
-.dockerignore
-Dockerfile
+
 
 # misc
 .DS_Store
